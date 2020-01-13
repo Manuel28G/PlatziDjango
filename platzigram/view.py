@@ -11,8 +11,11 @@ def hello_world(request):
     ))
 
 
-def hi(request):
-    return HttpResponse('Hi!')
+def hi(request, name, age):
+    if age < 12:
+        return HttpResponse('Sorry {}, you are not allowed here'.format(name))
+    else:
+        return HttpResponse('Hello {}, welcome to platzigram.'.format(name))
 
 
 def get_params_json(request):
@@ -33,4 +36,6 @@ def get_params_json(request):
         'numbers': responseArray,
         'message': 'Integers sorted successfully'
     }
-    return HttpResponse(json.dumps(data), content_type='application/json')
+    return HttpResponse(
+        json.dumps(data, indent=4),
+        content_type='application/json')
