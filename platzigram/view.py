@@ -28,4 +28,9 @@ def get_params_json(request):
         return HttpResponse(
             'El parámetro numbers debe contener solo números')
     responseArray.sort()
-    return JsonResponse(responseArray, safe=False)
+    data = {
+        'status': 'ok',
+        'numbers': responseArray,
+        'message': 'Integers sorted successfully'
+    }
+    return HttpResponse(json.dumps(data), content_type='application/json')
