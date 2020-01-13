@@ -22,11 +22,10 @@ def get_params_json(request):
         return HttpResponse(
             'Debe ingresar el parametro numbers con un conjunto de números p.e. ?numbers=10,30,4,50,2')
     responseArray = []
-    for value in params.split(','):
-        try:
-            responseArray.append(int(value))
-        except:
-            return HttpResponse(
-                'El parámetro numbers debe contener solo números')
+    try:
+        responseArray = [int(i) for i in params.split(',')]
+    except:
+        return HttpResponse(
+            'El parámetro numbers debe contener solo números')
     responseArray.sort()
     return JsonResponse(responseArray, safe=False)
