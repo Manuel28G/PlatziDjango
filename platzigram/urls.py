@@ -20,4 +20,6 @@ from platzigram import view
 
 urlpatterns = [
     path('hello-world/', view.hello_world),
+    path('hi/', view.hi),
+    path('json/', view.get_params_json),
 ]
