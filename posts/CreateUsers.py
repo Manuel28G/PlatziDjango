@@ -39,8 +39,10 @@ users = [
 
 
 def create_users(request):
-    for user in users:
-        obj = User(**user)
-        obj.save()
-        print(obj.pk, ":", obj.email)
-    return HttpResponse('Usuarios creados')
+    try:
+        for user in users:
+                obj = User(**user)
+                obj.save()
+                print(obj.pk, ":", obj.email)
+    finally:
+        return HttpResponse('Usuarios creados')
