@@ -23,6 +23,6 @@ urlpatterns = [
     path('hello-world/', local_views.hello_world),
     path('hi/<str:name>/<int:age>', local_views.hi),
     path('json/', local_views.get_params_json),
-    path('posts/',posts_views.list_posts)
-
+    path('posts/',posts_views.list_posts),
+    path('create-users/', posts_views.CreateUsers.create_users),
 ]

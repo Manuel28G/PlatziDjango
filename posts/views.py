@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from datetime import datetime
 
+from posts import CreateUsers
+
 posts = [
     {
         'title': 'Mont Blanc',
