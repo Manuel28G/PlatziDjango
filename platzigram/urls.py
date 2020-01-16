@@ -13,16 +13,16 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-
+from django.contrib import admin
 from django.urls import path
 from platzigram import view as local_views
 from posts import views as posts_views
 
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('hello-world/', local_views.hello_world),
     path('hi/<str:name>/<int:age>', local_views.hi),
     path('json/', local_views.get_params_json),
     path('posts/',posts_views.list_posts),
-    path('create-users/', posts_views.CreateUsers.create_users),
 ]
