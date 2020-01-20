@@ -13,8 +13,10 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls.static import static
 from platzigram import view as local_views
 from posts import views as posts_views
 
@@ -25,4 +27,4 @@ urlpatterns = [
     path('hi/<str:name>/<int:age>', local_views.hi),
     path('json/', local_views.get_params_json),
     path('posts/',posts_views.list_posts),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
